@@ -3,6 +3,7 @@ package com.example.inputandoutput
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -31,6 +32,18 @@ class MainActivity : AppCompatActivity() {
             //Added code to greet the recipient.
             welcomeTextView.text = "Welcome ${nameTxtField.text}"
             //welcomeText.text = "Welcome " + nameTxtField.text
+
+            //Added a switch to translate from English to Zulu
+            val zuluSwitch = findViewById<Switch>(R.id.zuluSwitch)
+
+            clickMeButton?.setOnClickListener {}
+            var greeting: String
+            if (zuluSwitch.isChecked) {
+                greeting = "Sawubona, ${nameTxtField.text}!"
+            } else {
+                greeting = "Greetings, ${nameTxtField.text}!"
+            }
+            welcomeTextView.text = greeting
         }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
