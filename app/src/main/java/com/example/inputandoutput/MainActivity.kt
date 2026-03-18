@@ -36,12 +36,20 @@ class MainActivity : AppCompatActivity() {
             //Added a switch to translate from English to Zulu
             val zuluSwitch = findViewById<Switch>(R.id.zuluSwitch)
 
+            //Added additional code to the button
             clickMeButton?.setOnClickListener {}
             var greeting: String
-            if (zuluSwitch.isChecked) {
+            var zulu: Boolean = zuluSwitch.isChecked
+            if (zulu) {
                 greeting = "Sawubona, ${nameTxtField.text}!"
             } else {
-                greeting = "Greetings, ${nameTxtField.text}!"
+                // Easter egg for Saadiq
+                if (nameTxtField.text.toString() == "Saadiq" ||
+                    nameTxtField.text.toString() == "Steyn") {
+                    greeting = "Greetings, ${nameTxtField.text}!"
+                } else {
+                    greeting = "Hello, ${nameTxtField.text}!"
+                }
             }
             welcomeTextView.text = greeting
         }
